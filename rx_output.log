@@ -1,0 +1,7 @@
+[INFO] Opening device: /tmp/ttyV0
+[INFO] Requested configuration: baud=115200 data_bits=8 parity=none stop_bits=1 timeout=5
+[INFO] Transmitted 31 bytes.
+[INFO] Waiting up to 5 second(s) for incoming data...
+[RX 16 bytes] Hello from peer
+[RX 16 bytes] Hello from peer
+[INFO] Done.

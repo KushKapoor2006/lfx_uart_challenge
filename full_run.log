@@ -1,0 +1,25 @@
+gcc -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Wall -Wextra -Wpedantic -std=c11 -O2 -MMD -MP -c src/main.c -o build/release/obj/main.o
+gcc -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Wall -Wextra -Wpedantic -std=c11 -O2 -MMD -MP -c src/uart_init.c -o build/release/obj/uart_init.o
+gcc -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Wall -Wextra -Wpedantic -std=c11 -O2 -MMD -MP -c src/uart_config.c -o build/release/obj/uart_config.o
+gcc -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Wall -Wextra -Wpedantic -std=c11 -O2 -MMD -MP -c src/uart_io.c -o build/release/obj/uart_io.o
+gcc -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Wall -Wextra -Wpedantic -std=c11 -O2 -MMD -MP -c src/uart_error.c -o build/release/obj/uart_error.o
+gcc -Iinclude -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Wall -Wextra -Wpedantic -std=c11 -O2 -MMD -MP -c src/uart_time.c -o build/release/obj/uart_time.o
+gcc build/release/obj/main.o build/release/obj/uart_init.o build/release/obj/uart_config.o build/release/obj/uart_io.o build/release/obj/uart_error.o build/release/obj/uart_time.o -o uart_prog  
+./tests/loopback_test.sh
+[INFO] Creating virtual serial pair:
+       /tmp/ttyV0.ha3d <-> /tmp/ttyV1.yEh0
+[INFO] Starting UART program...
+[INFO] Capturing transmitted data from peer side...
+[INFO] Sending test data from the peer side...
+[INFO] Program output:
+[INFO] Opening device: /tmp/ttyV0.ha3d
+[INFO] Requested configuration: baud=115200 data_bits=8 parity=none stop_bits=1 timeout=5
+[INFO] Transmitted 16 bytes.
+[INFO] Waiting up to 5 second(s) for incoming data...
+[RX 25 bytes] Hello from the peer side
+[INFO] Done.
+[INFO] Captured transmitted data:
+TX from program
+[INFO] Running negative test: invalid device path...
+[INFO] Running negative test: non-TTY device path...
+[INFO] Loopback test completed successfully.
